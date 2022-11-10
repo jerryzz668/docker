@@ -28,9 +28,7 @@ RUN sed 's/deb/# deb/g' -i /etc/apt/sources.list.d/cuda.list \
   && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse \
   && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse \
   && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\
-
   && apt-get update \
-
   && mkdir /var/run/sshd \
   && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
   && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
@@ -48,8 +46,8 @@ RUN sed 's/deb/# deb/g' -i /etc/apt/sources.list.d/cuda.list \
   && sed 's/# deb/deb/g' -i /etc/apt/sources.list.d/cuda.list \
   && cp cudnn.h /usr/local/cuda/include/ \
   && cp lib64/* /usr/local/cuda/lib64/ \
-  && chmod a+r /usr/local/cuda/include/cudnn.h
-  && chmod a+r /usr/local/cuda/lib64/libcudnn*
+  && chmod a+r /usr/local/cuda/include/cudnn.h \
+  && chmod a+r /usr/local/cuda/lib64/libcudnn* \
   && rm -rf /workspace/*; exit 0
 
 EXPOSE 22
