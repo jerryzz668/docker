@@ -17,18 +17,7 @@ RUN sed 's/deb/# deb/g' -i /etc/apt/sources.list.d/cuda.list \
   && apt install -y build-essential libgl1-mesa-dev libglib2.0-dev openssh-server liblzma-dev \
   && apt install -y libssl-dev zlib1g-dev libbz2-dev libdb-dev libsqlite3-dev lsb-release \
   && apt install -y vim curl git iputils-ping net-tools telnet tmux unzip ca-certificates software-properties-common \
-  && vim /etc/apt/sources.list \
-  && deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse \
-  && deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse \
-  && deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse \
-  && deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse \
-  && deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse \
-  && deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse \
-  && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse \
-  && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse \
-  && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse \
-  && deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse\
-  && apt-get update \
+  && cp sources.list /etc/apt/sources.list \
   && mkdir /var/run/sshd \
   && sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
   && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
